@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
         while ($row = $result_orders_by_month->fetch_assoc()) {
         echo "<tr>
         <td>{$row['bulan']}</td>
-        <td>{$row['jumlah_pesanan']}</td>
+        <td>{$row['jumlah_pesanan']}</td> 
         <td>
         <a href='admin/print_orders.php?bulan={$row['bulan']}' class='btn btn-sm btn-primary' target='_blank'>Cetak</a>
         </td>
