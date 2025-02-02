@@ -18,7 +18,7 @@ include 'DATABASE/db.php';
     <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
       <div class="carousel-item active"> 
-        <img src="assets/img/weddingbanner1.jpg" alt="">
+        <img src="assets/img/hero1.jpg" alt="">
         <div class="carousel-container">
           <h2>secure your wedding moments we are expert<br></h2>
           <p>"Kami hadir untuk menangkap setiap detik kebahagiaan Anda dengan sentuhan kreativitas dan profesionalisme. Biarkan cerita cinta Anda terwujud dalam gambar yang abadi."</p>
@@ -66,7 +66,7 @@ include 'DATABASE/db.php';
         <div class="row gy-4">
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p><?php echo htmlspecialchars($about['description']); ?></p>
-            <a href="#" class="read-more"><span>Baca Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+            <a href="services.php" class="read-more"><span>Lihat daftar harga</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>

@@ -18,19 +18,22 @@ include 'DATABASE/db.php'; // Pastikan koneksi ke database
       <div class="container">
         <div class="row gy-4">
           
-          <!-- Paket Video -->
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pricing-item" style="background: url('assets/img/paket3.jpg') no-repeat center; background-size: cover;">
-              <h3>Video Liputan</h3>
-              <h4><sup>Rp.</sup>500.000</h4>
-              <ul>
-                <li><i class="bi bi-check"></i> 1 kamera video</li>
-                <li><i class="bi bi-check"></i> Durasi 60 Menit</li>
-                <li><i class="bi bi-check"></i> Flashdisk + GoogleDrive</li>
-              </ul>
-              <a href="https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20Video%20seharga%20Rp.500.000" class="buy-btn">Pesan via WhatsApp</a>
-            </div>
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="pricing-item" style="background: url('assets/img/paket3.jpg') no-repeat center; background-size: cover;">
+            <h3>Video Liputan</h3>
+            <h4><sup>Rp.</sup>500.000</h4>
+            <ul>
+              <li><i class="bi bi-check"></i> 1 kamera video</li>
+              <li><i class="bi bi-check"></i> Durasi 60 Menit</li>
+              <li><i class="bi bi-check"></i> Flashdisk + GoogleDrive</li>
+            </ul>
+            <a href="https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20Video%20Liputan%20seharga%20Rp.500.000" 
+              class="buy-btn" 
+              onclick="return orderPaket(event, 'Video Liputan', 500000)">
+              Pesan Sekarang
+            </a>
           </div>
+        </div>
 
           <!-- Paket Video + Foto -->
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
@@ -90,6 +93,35 @@ include 'DATABASE/db.php'; // Pastikan koneksi ke database
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+  function orderPaket(event, namaPaket, harga) {
+    event.preventDefault(); // Mencegah tautan langsung dijalankan sebelum proses selesai
+
+    let formData = new FormData();
+    formData.append("nama_paket", namaPaket);
+    formData.append("harga", harga);
+
+    // Kirim data ke server
+    fetch('admin/process_order.php', {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text()) // Bisa diubah ke .json() jika server mengembalikan JSON
+    .then(data => {
+      console.log("Pesanan berhasil disimpan:", data);
+
+      // Jika berhasil, redirect ke WhatsApp
+      let waUrl = `https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20${encodeURIComponent(namaPaket)}%20seharga%20Rp.${harga}`;
+      window.location.href = waUrl;
+    })
+    .catch(error => {
+      console.error("Error saat menyimpan pesanan:", error);
+      alert("Gagal memproses pesanan. Coba lagi!");
+    });
+
+    return false; // Agar tautan tidak langsung dijalankan sebelum proses selesai
+  }
+</script>
 </body>
 
 </html>

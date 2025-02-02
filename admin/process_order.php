@@ -1,20 +1,19 @@
 <?php
-include '../DATABASE/db.php';
+include '../DATABASE/db.php'; // Pastikan koneksi database
 
-// Proses pemesanan
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama_paket = $conn->real_escape_string($_POST['nama_paket']);
-    $harga = $conn->real_escape_string($_POST['harga']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama_paket = $_POST["nama_paket"];
+    $harga = $_POST["harga"];
+    
+    $stmt = $conn->prepare("INSERT INTO orders (nama_paket, harga, tanggal_pemesanan) VALUES (?, ?, NOW())");
+    $stmt->bind_param("si", $nama_paket, $harga);
 
-    // Simpan ke database
-    $query = "INSERT INTO orders (nama_paket, harga) VALUES ('$nama_paket', '$harga')";
-    if ($conn->query($query) === TRUE) {
-        echo "Pemesanan berhasil disimpan!";
+    if ($stmt->execute()) {
+        echo "Pesanan berhasil disimpan.";
     } else {
-        echo "Terjadi kesalahan: " . $conn->error;
+        echo "Error: " . $stmt->error;
     }
-
-    // Redirect kembali ke halaman sebelumnya
-    header("Location: ../services.php");
+    $stmt->close();
+    $conn->close();
 }
 ?>

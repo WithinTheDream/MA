@@ -3,12 +3,8 @@ include 'includes/header.php';
 include 'includes/navbar.php'; 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <body class="index-page">
 
   <main class="main">
@@ -18,8 +14,8 @@ include 'includes/navbar.php';
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <div><span>Need Help?</span> <span class="description-title">Contact Us</span></div>
+        <h2>Kontak</h2>
+        <div><span>Butuh bantuan?</span> <span class="description-title">Kontak kami</span></div>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -31,24 +27,32 @@ include 'includes/navbar.php';
               <div class="col-lg-12">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <h3>Alamat</h3>
+                  <p>Ngaluran rt 06 rw 02 karanganyar, Demak, Demak 59582
+                  </p>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
+                <a href="https://wa.me/155895548855"><i class="bi bi-whatsapp"></i></a>
+                  <h3>Whatsapp</h3>
+                  <p>+62 8822 8892 484</p>
+                  <div class="social-links d-flex mt-3">
+                  </div>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
+                  <h3>Sosial media :</h3>
+                  <a href="https://facebook.com/yourpage"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/yourpage"><i class="bi bi-instagram"></i></a>
+                  <a href="https://youtube.com/yourchannel"><i class="bi bi-youtube"></i></a>
+                  <p></p>
+                  <div class="social-links d-flex mt-3">
+
+                  </div>
                 </div>
               </div><!-- End Info Item -->
 
@@ -56,36 +60,19 @@ include 'includes/navbar.php';
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
+            <div class="row">
+              <!-- Contact Form -->
+              <div class="col-md-6">
+                   <iframe 
+                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d342.2732000735657!2d110.7359223500722!3d-6.8696541020691635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70c316d48254dd%3A0x13213ad163de0c60!2sMA%20Productiont!5e1!3m2!1sid!2sid!4v1738500492235!5m2!1sid!2sid"
+                   width="209%" height="440" style="border:100;" allowfullscreen="" loading="lazy">>
+                  </iframe>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div><!-- End Contact Form -->
+            </div>
+          </div>
 
         </div>
 
@@ -93,9 +80,7 @@ include 'includes/navbar.php';
 
     </section><!-- /Contact Section -->
 
-    </main>
-
-
+  </main>
 
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -122,13 +107,8 @@ include 'includes/navbar.php';
 <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
-
 
 <?php 
 include 'includes/footer.php'; 
 ?>
-
-
-

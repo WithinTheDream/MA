@@ -6,7 +6,8 @@ use Dompdf\Options;
 
 include '../DATABASE/db.php';
 
-$query_orders = "SELECT * FROM orders";
+// Query pesanan dengan tanggal pemesanan
+$query_orders = "SELECT * FROM orders ORDER BY tanggal_pemesanan DESC";
 $result_orders = $conn->query($query_orders);
 
 // Setup DomPDF
@@ -23,6 +24,7 @@ ob_start();
         <tr>
             <th>Nama Paket</th>
             <th>Harga</th>
+            <th>Tanggal Pemesanan</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +34,7 @@ ob_start();
                 echo "<tr>
                         <td>" . $row['nama_paket'] . "</td>
                         <td>Rp. " . number_format($row['harga'], 0, ',', '.') . "</td>
+                        <td>" . date("d-m-Y H:i", strtotime($row['tanggal_pemesanan'])) . "</td>
                     </tr>";
             }
         } else {

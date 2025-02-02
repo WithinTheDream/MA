@@ -62,31 +62,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
 
      <!-- Display Orders -->
      <h2 class="mt-5">Pesanan Masuk</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nama Paket</th>
-                <th>Harga</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php 
-            if ($result_orders->num_rows > 0) {
-                while ($row = $result_orders->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row['nama_paket'] . "</td>
-                            <td>Rp. " . number_format($row['harga'], 0, ',', '.') . "</td>
-                             <td>
-                            <a href='admin/delete_order.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm'>Hapus</a>
-                        </td>
-                    </tr>";
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama Paket</th>
+                    <th>Harga</th>
+                    <th>Tanggal Pemesanan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                if ($result_orders->num_rows > 0) {
+                    while ($row = $result_orders->fetch_assoc()) {
+                        echo "<tr>
+                                <td>" . $row['nama_paket'] . "</td>
+                                <td>Rp. " . number_format($row['harga'], 0, ',', '.') . "</td>
+                                <td>" . date("d-m-Y H:i", strtotime($row['tanggal_pemesanan'])) . "</td>
+                                <td>
+                                    <a href='admin/delete_order.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm'>Hapus</a>
+                                </td>
+                            </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>Tidak ada pesanan.</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='3'>Tidak ada pesanan.</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+                ?>
+            </tbody>
+        </table>
+
 
     <!-- Print Button -->
     <form action="admin/print_orders.php" method="post">
