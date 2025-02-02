@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../DATABASE/db.php';
+require_once __DIR__ . '/../DATABASE/db.php';
 
 // Tangkap data dari form
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
