@@ -1,7 +1,6 @@
 <?php 
 include 'includes/header.php'; 
 include 'includes/navbar.php'; 
-
 include 'DATABASE/db.php';  
 
 ?>
@@ -15,22 +14,22 @@ include 'DATABASE/db.php';
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 
       <div class="carousel-item active"> 
-        <img src="assets/img/hero1.jpg" alt="">
+        <img src="assets/img/hero-carousel/hero1.jpg" alt="">
         <div class="carousel-container">
-          <h2>secure your wedding moments we are expert<br></h2>
-          <p>"Kami hadir untuk menangkap setiap detik kebahagiaan Anda dengan sentuhan kreativitas dan profesionalisme. Biarkan cerita cinta Anda terwujud dalam gambar yang abadi."</p>
+          <h2>Secure your wedding moments we are expert<br></h2>
+          <p>"Kami hadir untuk menangkap setiap detik kebahagiaan Anda dengan sentuhan kreativitas dan profesionalisme."</p>
           <a href="services.php" class="btn-get-started">Pesan Sekarang!</a>
         </div>
       </div><!-- End Carousel Item -->
 
       <div class="carousel-item">
-        <img src="assets/img/weddingbanner2.jpg" alt="">
+        <img src="assets/img/hero-carousel/hero2.jpg" alt="">
         <div class="carousel-container">
-          <h2>Premium Photography and Videography services</h2>
-          <p>Dengan pengalaman lebih dari 10 tahun dan ratusan pasangan bahagia, kami siap memberikan hasil terbaik untuk setiap momen tak terlupakan Anda.</p>
+          <h2>Premium Photography and Videography</h2>
+          <p>Dengan pengalaman lebih dari 10 tahun, kami siap memberikan hasil terbaik untuk setiap momen tak terlupakan Anda.</p>
           <a href="services.php" class="btn-get-started">Pesan Sekarang!</a>
         </div>
       </div><!-- End Carousel Item -->

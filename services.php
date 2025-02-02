@@ -27,44 +27,55 @@ include 'DATABASE/db.php'; // Pastikan koneksi ke database
               <li><i class="bi bi-check"></i> Durasi 60 Menit</li>
               <li><i class="bi bi-check"></i> Flashdisk + GoogleDrive</li>
             </ul>
-            <a href="https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20Video%20Liputan%20seharga%20Rp.500.000" 
-              class="buy-btn" 
-              onclick="return orderPaket(event, 'Video Liputan', 500000)">
-              Pesan Sekarang
+            <a href="#" class="buy-btn" onclick="return orderPaket(event, 'Video Liputan', 500000)">Pesan Sekarang</a>
             </a>
           </div>
         </div>
 
-          <!-- Paket Video + Foto -->
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pricing-item" style="background: url('assets/img/paket1.jpg') no-repeat center; background-size: cover;">
-              <h3>Video + Foto</h3>
-              <h4><sup>Rp.</sup>1.200.000</h4>
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pricing-item" style="background: url('assets/img/paket2.jpg') no-repeat center; background-size: cover;">
+              <h3>Foto Liputan 1 roll</h3>
+              <h4><sup>Rp.</sup>400.000</h4>
               <ul>
-                <li><i class="bi bi-check"></i> 1 kamera video</li>
-                <li><i class="bi bi-check"></i> 1 kamera foto</li>
-                <li><i class="bi bi-check"></i> DVD Video</li>
+                <li><i class="bi bi-check"></i> Cetak 4R Album Magnetic</li>
                 <li><i class="bi bi-check"></i> Flashdisk</li>
                 <li><i class="bi bi-check"></i> Upload Google Drive</li>
               </ul>
-              <a href="https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20Video%20seharga%20Rp.500.000" class="buy-btn">Pesan via WhatsApp</a>
+              <a href="#" class="buy-btn" onclick="return orderPaket(event, 'Foto Liputan 1 roll', 400000)">Pesan Sekarang</a>
             </div>
           </div>
 
-          <!-- Paket Video + Foto + Cinema -->
+          <!-- Paket Video + Foto -->
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pricing-item" style="background: url('assets/img/paket2.jpg') no-repeat center; background-size: cover;">
-              <h3>Video + Foto + Cinema</h3>
+              <div class="pricing-item" style="background: url('assets/img/paket1.jpg') no-repeat center; background-size: cover;">
+              <h3>Foto Magazine</h3>
               <h4><sup>Rp.</sup>2.000.000</h4>
               <ul>
-                <li><i class="bi bi-check"></i> 2 kamera video, 1 kamera foto, drone</li>
-                <li><i class="bi bi-check"></i> Flashdisk</li>
-                <li><i class="bi bi-check"></i> DVD Video</li>
-                <li><i class="bi bi-check"></i> Upload Google Drive & YouTube</li>
+                <li><i class="bi bi-check"></i> Cetakan kolase</li>
+                <li><i class="bi bi-check"></i> Cetakan album kolase</li>
+                <li><i class="bi bi-check"></i> cetakan 4R 80 lembar</li>
+                <li><i class="bi bi-check"></i> cetakan 16r 2lembar include frame</li>
+                <li><i class="bi bi-check"></i> Upload Google Drive & flasdisk</li>
               </ul>
-              <a href="https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20Video%20seharga%20Rp.500.000" class="buy-btn">Pesan via WhatsApp</a>
+              <a href="#" class="buy-btn" onclick="return orderPaket(event, 'Foto Magazine', 2000000)">Pesan Sekarang</a>
             </div>
           </div>
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pricing-item" style="background: url('assets/img/paket4.jpg') no-repeat center; background-size: cover;">
+              <h3>Paket Foto + Video Liputan + Cinema</h3>
+              <h4><sup>Rp.</sup>4.000.000</h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Cetakan kolase</li>
+                <li><i class="bi bi-check"></i> cetakan 4R Album Magnetic</li>
+                <li><i class="bi bi-check"></i> cetakan 16R 2 lembar include frame</li>
+                <li><i class="bi bi-check"></i> vid cinema durasi 4 Menit.</li>
+                <li><i class="bi bi-check"></i> Upload Google Drive & flasdisk</li>
+              </ul>
+              <a href="#" class="buy-btn" onclick="return orderPaket(event, 'Paket Foto + Video Liputan + Cinema', 4000000)">Pesan Sekarang</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -111,7 +122,7 @@ include 'DATABASE/db.php'; // Pastikan koneksi ke database
       console.log("Pesanan berhasil disimpan:", data);
 
       // Jika berhasil, redirect ke WhatsApp
-      let waUrl = `https://wa.me/6283138848675?text=Halo,%20saya%20ingin%20memesan%20paket%20${encodeURIComponent(namaPaket)}%20seharga%20Rp.${harga}`;
+      let waUrl = `https://wa.me/6288228892484?text=Halo,%20saya%20ingin%20memesan%20paket%20${encodeURIComponent(namaPaket)}%20seharga%20Rp.${harga}`;
       window.location.href = waUrl;
     })
     .catch(error => {

@@ -28,26 +28,49 @@ if ($result_items->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <link rel="stylesheet" href="assets/vendor/aos/aos.css">
+    <script src="assets/vendor/aos/aos.js"></script>
+    <style>
+        .card-img-top {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.1);
+        }
+
+        .card-title, .card-text {
+            transition: opacity 0.5s ease-out;
+        }
+
+        .card-title:hover, .card-text:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
 <body class="index-page">
 
 <main class="main">
 <section id="portfolio" class="portfolio">
 
 <div class="container mt-5">
-    <h1>Our Portfolio</h1>
-    <p>Explore our projects categorized by expertise and focus.</p>
+    <h1 data-aos="fade-up" data-aos-duration="1000">Portofolio</h1>
+    <p data-aos="fade-up" data-aos-duration="1500">Eksplor projek yang telah kami selesaikan</p>
 
     <?php if (!empty($portfolio)): ?>
         <?php foreach ($portfolio as $category => $items): ?>
-            <h2 class="mt-4"><?php echo htmlspecialchars($category); ?></h2>
+            <h2 class="mt-4" data-aos="fade-left" data-aos-duration="1000"><?php echo htmlspecialchars($category); ?></h2>
             <div class="row">
                 <?php foreach ($items as $item): ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="<?php echo htmlspecialchars($item['image_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['title']); ?>">
+                        <div class="card" data-aos="zoom-in" data-aos-duration="1000">
+                            <img src="<?php echo htmlspecialchars($item['image_path']); ?>" class="card-img-top"
+                                 alt="<?php echo htmlspecialchars($item['title']); ?>">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo htmlspecialchars($item['title']); ?></h5>
-                                <p class="card-text"><?php echo htmlspecialchars($item['description']); ?></p>
+                                <h5 class="card-title" data-aos="fade-up" data-aos-duration="1500"><?php echo htmlspecialchars($item['title']); ?></h5>
+                                <p class="card-text" data-aos="fade-up" data-aos-duration="2000"><?php echo htmlspecialchars($item['description']); ?></p>
                             </div>
                         </div>
                     </div>
@@ -60,6 +83,7 @@ if ($result_items->num_rows > 0) {
 </div>
 </section>
 </main>
+
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -84,10 +108,14 @@ if ($result_items->num_rows > 0) {
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 
-</body>
+<script>
+    AOS.init(); // Initialize AOS animation library
+</script>
+
 </body>
 
 </html>
+
 <?php
 include 'includes/footer.php';
 ?>

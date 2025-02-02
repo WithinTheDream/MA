@@ -127,6 +127,7 @@ h6 {
   border: 3px solid var(--accent-color);
   border-top-color: var(--surface-color);
   animation: php-email-form-loading 1s linear infinite;
+
 }
 
 @keyframes php-email-form-loading {
@@ -809,10 +810,12 @@ section,
 .hero .carousel {
   width: 100%;
   min-height: 60vh;
+  text-align: center; /* Pusatkan teks */
   padding: 0;
   margin: 0;
   background-color: var(--background-color);
   position: relative;
+  
 }
 
 .hero img {
@@ -864,11 +867,13 @@ section,
   font-size: 48px;
   font-weight: 700;
   animation: fadeInDown 1s both;
+  text-align: center !important;
 }
 
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 30px;
+    text-align: center !important;
   }
 }
 
@@ -925,6 +930,7 @@ section,
   .hero .carousel-control-prev,
   .hero .carousel-control-next {
     width: 5%;
+    
   }
 }
 
@@ -933,6 +939,7 @@ section,
   background: none;
   font-size: 32px;
   line-height: 1;
+  
 }
 
 .hero .carousel-indicators {
@@ -942,6 +949,14 @@ section,
 .hero .carousel-indicators li {
   cursor: pointer;
 }
+
+
+.carousel-container h2, 
+.carousel-container p {
+    text-align: center !important; /* Pastikan semua teks di dalamnya tetap di tengah */
+    width: 100%;
+}
+
 
 @keyframes fadeInUp {
   from {

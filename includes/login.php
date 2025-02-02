@@ -24,11 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             // Jika admin, arahkan ke dashboard admin
             if ($email === "atmintmaproduction@gmail.com") {
                 $_SESSION['is_admin'] = true;
-                $_SESSION['error_message'] = "Anda Login sebagai admin.Fitur dashboard admin terbuka";
-                // header("Location: ../admin/admin_dashboard.php");
+                $_SESSION['error_message'] = "Anda Login sebagai admin. Fitur dashboard admin terbuka.";
                 header("Location: ../index.php");
             } else {
-                $_SESSION['error_message'] = "Login berhasil.";
+                $_SESSION['error_message'] = "Login berhasil sebagai pengguna.";
                 header("Location: ../index.php");
             }
         } else {

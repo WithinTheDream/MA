@@ -35,7 +35,7 @@ include 'includes/navbar.php';
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-                <a href="https://wa.me/155895548855"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://wa.me/6288228892484"><i class="bi bi-whatsapp"></i></a>
                   <h3>Whatsapp</h3>
                   <p>+62 8822 8892 484</p>
                   <div class="social-links d-flex mt-3">
@@ -46,9 +46,9 @@ include 'includes/navbar.php';
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
                   <h3>Sosial media :</h3>
-                  <a href="https://facebook.com/yourpage"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/yourpage"><i class="bi bi-instagram"></i></a>
-                  <a href="https://youtube.com/yourchannel"><i class="bi bi-youtube"></i></a>
+                  <a href="https://www.facebook.com/share/153XhQN78t/"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/clickstory85photovideography/"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.youtube.com/@ahmadkharis4684"><i class="bi bi-youtube"></i></a>
                   <p></p>
                   <div class="social-links d-flex mt-3">
 

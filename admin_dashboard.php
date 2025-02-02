@@ -21,6 +21,7 @@ $query_categories = "SELECT * FROM portfolio_categories ORDER BY name ASC";
 $result_categories = $conn->query($query_categories);
 
 // Handle Adding a New Portfolio Item
+// Handle Adding a New Portfolio Item
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_item'])) {
     $image_path = $_FILES['image']['name'];
     $title = $_POST['title'];
@@ -30,28 +31,72 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_item'])) {
     // Upload the image
     $target_dir = "assets/img/";
     $target_file = $target_dir . basename($image_path);
-    
+
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
         // Insert new portfolio item into the database
-        $insert_query = "INSERT INTO portfolio_items (image_path, title, description, category) VALUES ('$target_file', '$title', '$description', '$category_id')";
+        $insert_query = "INSERT INTO portfolio_items (image_path, title, description, category) 
+                         VALUES ('$target_file', '$title', '$description', '$category_id')";
+
         if ($conn->query($insert_query) === TRUE) {
-            echo "New portfolio item added successfully!";
+            echo "<script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Item portfolio berhasil ditambahkan.',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'admin_dashboard.php';
+                    });
+                  </script>";
         } else {
-            echo "Error: " . $conn->error;
+            echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: 'Terjadi kesalahan: {$conn->error}',
+                        confirmButtonText: 'OK'
+                    });
+                  </script>";
         }
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Terjadi kesalahan saat mengunggah gambar.',
+                    confirmButtonText: 'OK'
+                });
+              </script>";
     }
 }
+
+
 
 // Handle Adding a New Category
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
     $category_name = $_POST['category_name'];
     $insert_category_query = "INSERT INTO portfolio_categories (name) VALUES ('$category_name')";
+
     if ($conn->query($insert_category_query) === TRUE) {
-        echo "New category added successfully!";
+        echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Kategori Berhasil Ditambahkan!',
+                    text: 'Kategori baru telah berhasil ditambahkan.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'admin_dashboard.php';
+                });
+              </script>";
     } else {
-        echo "Error: " . $conn->error;
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal Menambahkan Kategori!',
+                    text: 'Error: {$conn->error}',
+                    confirmButtonText: 'OK'
+                });
+              </script>";
     }
 }
 ?>
@@ -90,13 +135,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
                 ?>
             </tbody>
         </table>
-
-
     <!-- Print Button -->
     <form action="admin/print_orders.php" method="post">
         <button type="submit" class="btn btn-primary mt-3">Print Laporan Pesanan</button>
     </form>
-
+    <br><br>
     <!-- Add New Portfolio Item -->
     <h2>Add New Portfolio Item</h2>
     <form action="admin_dashboard.php" method="post" enctype="multipart/form-data">
@@ -161,7 +204,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
                             <td>" . $row['description'] . "</td>
                             <td>" . $row['category'] . "</td>
                             <td>
-                                <a href='admin/edit_portfolio_item.php?id=" . $row['id'] . "' class='btn btn-warning'>Edit</a>
                                 <a href='admin/delete_portfolio_item.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
                             </td>
                         </tr>";
@@ -173,5 +215,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
         </tbody>
     </table>
 </div>
-
+<br><br>
 <?php include 'includes/footer.php'; ?>

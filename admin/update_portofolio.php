@@ -9,14 +9,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (move_uploaded_file($_FILES["portfolio_image"]["tmp_name"], $target_file)) {
         $query = "INSERT INTO portfolio (image_path) VALUES ('$target_file')";
         if ($conn->query($query)) {
-            echo "Gambar Portfolio berhasil diperbarui!";
+            echo "<script>
+                window.addEventListener('load', function () {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: 'Gambar portfolio berhasil diperbarui!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = '../admin_dashboard.php';
+                    });
+                });
+            </script>";
         } else {
-            echo "Error: " . $conn->error;
+            echo "<script>
+                window.addEventListener('load', function () {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        text: 'Terjadi kesalahan: " . $conn->error . "',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+            </script>";
         }
     } else {
-        echo "Terjadi kesalahan saat mengunggah gambar.";
+        echo "<script>
+            window.addEventListener('load', function () {
+                Swal.fire({
+                    title: 'Gagal!',
+                    text: 'Terjadi kesalahan saat mengunggah gambar.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
     }
-
-    header('Location: ../admin_dashboard.php');
 }
 ?>
+<!-- SweetAlert2 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
