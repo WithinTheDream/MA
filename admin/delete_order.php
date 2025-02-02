@@ -1,14 +1,28 @@
 <?php
-include '../DATABASE/db.php';
+require '../DATABASE/db.php'; // Hubungkan dengan database
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
-    $order_id = $_POST['order_id'];
-    $delete_query = "DELETE FROM orders WHERE id = '$order_id'";
-    if ($conn->query($delete_query) === TRUE) {
-        header("Location: ../admin_dashboard.php?delete_success=1");
-        exit();
+if (isset($_GET['id'])) {
+    $order_id = intval($_GET['id']); // Pastikan id adalah integer
+
+    // Query hapus data pesanan
+    $query = "DELETE FROM orders WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $order_id);
+
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Pesanan berhasil dihapus');
+                window.location.href='../admin_dashboard.php';
+              </script>";
     } else {
-        echo "Error: " . $conn->error;
+        echo "<script>
+                alert('Gagal menghapus pesanan');
+                window.location.href='../admin_dashboard.php';
+              </script>";
     }
+
+    $stmt->close();
 }
+
+$conn->close();
 ?>

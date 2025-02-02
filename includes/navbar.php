@@ -44,7 +44,6 @@ if (isset($_GET['logout'])) {
       <ul>
         <li><a href="index.php" class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">Beranda</a></li>
         <li><a href="services.php" class="<?= basename($_SERVER['PHP_SELF']) == 'services.php' ? 'active' : '' ?>">Jasa</a></li>
-        <li><a href="checkout.php" class="<?= basename($_SERVER['PHP_SELF']) == 'checkout.php' ? 'active' : '' ?>">Bayar</a></li>
         <li><a href="portofolio.php" class="<?= basename($_SERVER['PHP_SELF']) == 'portofolio.php' ? 'active' : '' ?>">Portofolio</a></li>
         <li><a href="contact.php" class="<?= basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : '' ?>">Kontak</a></li>
         

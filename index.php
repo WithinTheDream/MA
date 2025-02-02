@@ -20,27 +20,18 @@ include 'DATABASE/db.php';
       <div class="carousel-item active"> 
         <img src="assets/img/weddingbanner1.jpg" alt="">
         <div class="carousel-container">
-          <h2>Abadikan Momen Terindah Anda<br></h2>
-          <p>"Kami hadir untuk menangkap setiap detik kebahagiaan Anda dengan sentuhan kreativitas dan profesionalisme. Biarkan cerita cinta Anda terwujud dalam gambar yang abadi.</p>
-          <a href="#featured-services" class="btn-get-started">Pesan Sekarang!</a>
+          <h2>secure your wedding moments we are expert<br></h2>
+          <p>"Kami hadir untuk menangkap setiap detik kebahagiaan Anda dengan sentuhan kreativitas dan profesionalisme. Biarkan cerita cinta Anda terwujud dalam gambar yang abadi."</p>
+          <a href="services.php" class="btn-get-started">Pesan Sekarang!</a>
         </div>
       </div><!-- End Carousel Item -->
 
       <div class="carousel-item">
         <img src="assets/img/weddingbanner2.jpg" alt="">
         <div class="carousel-container">
-          <h2>Layanan Fotografi & Videografi Premium</h2>
-          <p>Dari pre-wedding hingga dokumentasi hari pernikahan, kami menawarkan layanan lengkap untuk mengabadikan momen istimewa Anda.</p>
-          <a href="#featured-services" class="btn-get-started">Pesan Sekarang!</a>
-        </div>
-      </div><!-- End Carousel Item -->
-
-      <div class="carousel-item">
-        <img src="assets/img/weddingbanner3.jpg" alt="">
-        <div class="carousel-container">
-          <h2>Percayakan Momen Spesial Anda pada Kami</h2>
+          <h2>Premium Photography and Videography services</h2>
           <p>Dengan pengalaman lebih dari 10 tahun dan ratusan pasangan bahagia, kami siap memberikan hasil terbaik untuk setiap momen tak terlupakan Anda.</p>
-          <a href="#featured-services" class="btn-get-started">Pesan Sekarang!</a>
+          <a href="services.php" class="btn-get-started">Pesan Sekarang!</a>
         </div>
       </div><!-- End Carousel Item -->
 

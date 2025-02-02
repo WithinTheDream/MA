@@ -4,6 +4,14 @@ include 'includes/header.php';
 include 'includes/navbar.php'; 
 include 'DATABASE/db.php'; 
 
+// Query Pesanan
+$query_orders = "SELECT * FROM orders";
+$result_orders = $conn->query($query_orders);
+
+// Debug jika query gagal
+if (!$result_orders) {
+    die("Query Error: " . $conn->error);
+}
 // Fetch Portfolio Items
 $query_items = "SELECT * FROM portfolio_items ORDER BY id ASC";
 $result_items = $conn->query($query_items);
@@ -49,86 +57,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
 ?>
 
 <div class="container mt-5">
+
     <h1>Admin Dashboard</h1>
 
-    <h2 class="mt-5">Daftar Pesanan</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>No. HP</th>
-            <th>Lokasi</th>
-            <th>Tanggal Acara</th>
-            <th>Jenis Acara</th>
-            <th>Paket</th>
-            <th>Harga</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        <?php
-        $query_orders = "SELECT * FROM orders";
-        $result_orders = $conn->query($query_orders);
-        // Di dalam loop while yang menampilkan daftar pesanan
-        while ($row = $result_orders->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$row['nama']}</td>
-                    <td>{$row['alamat']}</td>
-                    <td>{$row['no_hp']}</td>
-                    <td><a href='{$row['lokasi_maps']}' target='_blank'>Lihat Lokasi</a></td>
-                    <td>{$row['tanggal_acara']}</td>
-                    <td>{$row['jenis_acara']}</td>
-                    <td>{$row['paket']}</td>
-                    <td>Rp " . number_format($row['harga'], 0, ',', '.') . "</td>
-                    <td>
-                        <form action='admin/update_status.php' method='post'>
-                            <input type='hidden' name='order_id' value='{$row['id']}'>
-                            <select name='status' class='form-control'>
-                                <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
-                                <option value='Sudah Dijadwalkan' " . ($row['status'] == 'Sudah Dijadwalkan' ? 'selected' : '') . ">Sudah Dijadwalkan</option>
-                            </select>
-                            <button type='submit' class='btn btn-sm btn-success mt-1'>Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action='admin/delete_order.php' method='post' onsubmit='return confirm(\"Apakah Anda yakin ingin menghapus pesanan ini?\");'>
-                            <input type='hidden' name='order_id' value='{$row['id']}'>
-                            <button type='submit' class='btn btn-sm btn-danger'>Hapus</button>
-                        </form>
-                    </td>
-                </tr>";
-        }
-        ?>
-        <?php
-        // Query untuk mengelompokkan pesanan berdasarkan bulan dan tahun
-        $query_orders_by_month = "SELECT DATE_FORMAT(tanggal_acara, '%Y-%m') as bulan, COUNT(*) as jumlah_pesanan 
-        FROM orders 
-        GROUP BY bulan 
-        ORDER BY bulan DESC";
-        $result_orders_by_month = $conn->query($query_orders_by_month);
+     <!-- Display Orders -->
+     <h2 class="mt-5">Pesanan Masuk</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nama Paket</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if ($result_orders->num_rows > 0) {
+                while ($row = $result_orders->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row['nama_paket'] . "</td>
+                            <td>Rp. " . number_format($row['harga'], 0, ',', '.') . "</td>
+                             <td>
+                            <a href='admin/delete_order.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm'>Hapus</a>
+                        </td>
+                    </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='3'>Tidak ada pesanan.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 
-        echo "<h2>Daftar Pesanan per Bulan</h2>";
-        echo "<table class='table'>";
-        echo "<thead><tr><th>Bulan</th><th>Jumlah Pesanan</th><th>Aksi</th></tr></thead>";
-        echo "<tbody>";
-        while ($row = $result_orders_by_month->fetch_assoc()) {
-        echo "<tr>
-        <td>{$row['bulan']}</td>
-        <td>{$row['jumlah_pesanan']}</td> 
-        <td>
-        <a href='admin/print_orders.php?bulan={$row['bulan']}' class='btn btn-sm btn-primary' target='_blank'>Cetak</a>
-        </td>
-        </tr>";
-        }
-        echo "</tbody></table>";
-        echo "<a href='admin/print_orders.php' class='btn btn-primary mb-3' target='_blank'>Cetak Semua Pesanan</a>";
-        ?>
-        
-    </tbody>
-</table>
+    <!-- Print Button -->
+    <form action="admin/print_orders.php" method="post">
+        <button type="submit" class="btn btn-primary mt-3">Print Laporan Pesanan</button>
+    </form>
 
     <!-- Add New Portfolio Item -->
     <h2>Add New Portfolio Item</h2>
